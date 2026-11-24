@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "projeto": "Plataforma Jurídica A.Reis Advogados",
+    "parceiroTecnologico": "Snipertec Tecnologia e Automação LTDA",
+    "urlProducao": "https://sistema.areisadvogados.com.br",
+    "relatorioGeradoEm": "2026-11-24",
+    "contrato": {
+      "titulo": "Contrato de Prestação de Serviços – Suporte e Desenvolvimento Evolutivo",
+      "contratante": "A.Reis Advogados (CNPJ 29.807.954/0001-92)",
+      "representanteContratante": "Dra. Angélica Tatiane Reis do Nascimento",
+      "contratada": "Snipertec Tecnologia e Automação LTDA (CNPJ 41.617.306/0001-79)",
+      "representanteContratada": "Douglas Ala Nogueira dos Santos",
+      "dataDocumento": "2026-09-01",
+      "dataAssinaturaContratada": "2026-09-01T16:19:16-03:00",
+      "dataAssinaturaContratante": "2026-09-04T10:03:54-03:00",
+      "vigenciaMeses": 6
+    }
+  },
+  "placarGeral": {
+    "diasDeEvolucao": 85,
+    "pullRequestsMergeadosExatos": 239,
+    "commitsEntreguesNoPeriodo": 1308,
+    "faixaNumeracaoPRs": "PR #4 ao PR #253",
+    "verificacoesAutomatizadasTotalAtual": 16090,
+    "novosTestesCriadosNoCicloEvolutivo": 8122,
+    "andamentosOficiaisSincronizadosJudit": 14800,
+    "processosEnriquecidosPiloto": 140,
+    "documentosProcessuaisMapeados": 10511,
+    "processosTotaisCarteiraPadronizados": 631,
+    "processosJudiciaisCnj": 519,
+    "processosTributariosReceitaImportados": 109,
+    "processosAdministrativosDiversos": 3,
+    "rotasMigradasValidacaoAtiva": 178,
+    "totalRotasApiBlindadas": 594,
+    "atualizacoesComBackupPrevioVps": "100%"
+  }
+}

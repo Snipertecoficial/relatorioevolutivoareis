@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relatório Executivo de Evolução Tecnológica — A.Reis Advogados | Snipertec</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --surface-highlight: #eff6ff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --primary: #1e3a8a;
+      --primary-light: #2563eb;
+      --primary-soft: #dbeafe;
+      --gold: #92400e;
+      --gold-bg: #fef3c7;
+      --gold-border: #fde68a;
+      --green: #166534;
+      --green-bg: #dcfce7;
+      --green-border: #bbf7d0;
+      --slate: #334155;
+      --slate-bg: #f1f5f9;
+      --slate-border: #cbd5e1;
+      --purple: #5b21b6;
+      --purple-bg: #ede9fe;
+      --purple-border: #ddd6fe;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 12px 28px -6px rgba(15, 23, 42, 0.1), 0 4px 12px -4px rgba(15, 23, 42, 0.05);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1120;
+      --surface: #111827;
+      --surface-alt: #1e293b;
+      --surface-highlight: #172554;
+      --text: #f8fafc;
+      --text-muted: #cbd5e1;
+      --border: #334155;
+      --primary: #60a5fa;
+      --primary-light: #3b82f6;
+      --primary-soft: #1e3a8a;
+      --gold: #fbbf24;
+      --gold-bg: rgba(245, 158, 11, 0.14);
+      --gold-border: rgba(245, 158, 11, 0.35);
+      --green: #4ade80;
+      --green-bg: rgba(22, 163, 74, 0.15);
+      --green-border: rgba(22, 163, 74, 0.35);
+      --slate: #cbd5e1;
+      --slate-bg: rgba(51, 65, 85, 0.4);
+      --slate-border: rgba(100, 116, 139, 0.4);
+      --purple: #c084fc;
+      --purple-bg: rgba(124, 58, 237, 0.18);
+      --purple-border: rgba(124, 58, 237, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background-color: var(--bg);
+      line-height: 1.6;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    /* Barra de navegação fixa */
+    .topbar {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+      backdrop-filter: blur(12px);
+      border-block-end: 1px solid var(--border);
+      padding: 0.75rem 1.5rem;
+    }
+
+    .topbar-inner {
+      max-inline-size: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.02rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: #fde68a;
+      border: 1px solid rgba(253, 230, 138, 0.35);
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .nav-links a:hover {
+      background: var(--surface-alt);
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0.95rem;
+      border-radius: 9px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn:hover {
+      background: var(--surface-alt);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #172554, #1d4ed8);
+      color: #ffffff;
+    }
+
+    .container {
+      max-inline-size: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* Hero Executivo */
+    .hero {
+      background: linear-gradient(135deg, #0b1120 0%, #172554 55%, #1e40af 100%);
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 3.25rem 2.75rem;
+      margin-block-end: 2.5rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(253, 230, 138, 0.4);
+      color: #fde68a;
+      padding: 0.4rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-block-end: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.85rem, 3.3vw, 2.75rem);
+      line-height: 1.2;
+      margin: 0 0 1.1rem;
+      font-weight: 800;
+      max-inline-size: 960px;
+    }
+
+    .hero p.lead {
+      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+      color: #e2e8f0;
+      max-inline-size: 900px;
+      margin: 0 0 2.25rem;
+    }
+
+    .contract-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 16px;
+      padding: 1.25rem 1.4rem;
+      margin-block-end: 2rem;
+    }
+
+    .contract-item span {
+      display: block;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #93c5fd;
+      font-weight: 700;
+      margin-block-end: 0.15rem;
+    }
+
+    .contract-item strong {
+      font-size: 0.96rem;
+      color: #ffffff;
+    }
+
+    /* KPI Grid (3x2 balanceado no desktop) */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .kpi-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 16px;
+      padding: 1.25rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .kpi-number {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fde68a;
+      line-height: 1.1;
+      margin-block-end: 0.35rem;
+    }
+
+    .kpi-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-block-end: 0.25rem;
+    }
+
+    .kpi-desc {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      margin: 0;
+    }
+
+    /* NOVO: Espelho do Contrato Assinado x Entregas Realizadas (Leitura em 30s) */
+    .contract-mirror {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 2.25rem;
+      margin-block-end: 2.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .mirror-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-block-start: 1.25rem;
+    }
+
+    .mirror-card {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-block-start: 4px solid var(--green);
+      border-radius: var(--radius-sm);
+      padding: 1.35rem;
+    }
+
+    .mirror-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--green-bg);
+      color: var(--green);
+      border: 1px solid var(--green-border);
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      margin-block-end: 0.65rem;
+      text-transform: uppercase;
+    }
+
+    .mirror-card h3 {
+      margin: 0 0 0.45rem;
+      font-size: 1.08rem;
+    }
+
+    .mirror-card p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Resumo Executivo da Jornada por Mês */
+    .story-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-inline-start: 6px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      margin-block-end: 3rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .story-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      margin-block-end: 0.85rem;
+    }
+
+    .story-badge {
+      background: var(--gold-bg);
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      font-weight: 800;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .story-box h2 {
+      margin: 0;
+      font-size: 1.45rem;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-block-start: 1.5rem;
+    }
+
+    .story-step {
+      background: var(--surface-alt);
+      border-radius: var(--radius-sm);
+      padding: 1.35rem;
+      border-block-start: 3px solid var(--primary-light);
+    }
+
+    .story-step .month-tag {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--primary-light);
+      margin-block-end: 0.3rem;
+    }
+
+    .story-step h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .story-step p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Títulos de seção */
+    .section-header {
+      margin-block-end: 1.5rem;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--primary-light);
+      margin-block-end: 0.35rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2.05rem);
+      margin: 0 0 0.5rem;
+      font-weight: 800;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      max-inline-size: 860px;
+    }
+
+    /* Barra de Filtro Rápido por Categoria + Busca */
+    .filter-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-block-end: 1.5rem;
+      background: var(--surface);
+      padding: 1.15rem 1.35rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .search-input {
+      flex: 1 1 280px;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .category-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .cat-btn {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .cat-btn:hover,
+    .cat-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Cards das 8 Áreas com Leitura Escaneável (Checkmarks diretos) */
+    .ba-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.5rem;
+      margin-block-end: 3.5rem;
+    }
+
+    .ba-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .ba-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .ba-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .pr-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .executive-summary-pill {
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      font-size: 0.91rem;
+    }
+
+    .executive-summary-pill strong {
+      color: var(--gold);
+      display: block;
+      margin-block-end: 0.2rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .ba-evolution-strip {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      background: var(--slate-bg);
+      border: 1px solid var(--slate-border);
+      padding: 0.6rem 0.85rem;
+      border-radius: 8px;
+    }
+
+    .ba-evolution-strip strong {
+      color: var(--slate);
+    }
+
+    .ba-after {
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
+      padding: 1rem 1.1rem;
+      border-radius: var(--radius-sm);
+      flex: 1;
+    }
+
+    .ba-after > strong {
+      color: var(--green);
+      display: block;
+      margin-block-end: 0.5rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .check-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .check-list li {
+      font-size: 0.9rem;
+      position: relative;
+      padding-inline-start: 1.4rem;
+      line-height: 1.45;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      inset-inline-start: 0;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    /* Accordion conforme modern-web-guidance */
+    .accordion-section {
+      margin-block-end: 3.5rem;
+    }
+
+    .accordion-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-block-end: 1rem;
+    }
+
+    [command="--toggle-all"][aria-expanded="true"] .expand,
+    [command="--toggle-all"][aria-expanded="false"] .collapse {
+      display: none;
+    }
+
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .accordion > details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .accordion > details[open] {
+      border-color: var(--primary-light);
+    }
+
+    .accordion > details > summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.75ch;
+      padding: 1.15rem 1.25rem;
+      font-weight: 800;
+      font-size: 1.06rem;
+      cursor: pointer;
+      user-select: none;
+      background: var(--surface);
+      transition: background 0.15s;
+    }
+
+    .accordion > details > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion > details > summary:hover {
+      background: var(--surface-alt);
+    }
+
+    .accordion > details > summary::before {
+      content: "";
+      inline-size: 1.1em;
+      block-size: 1.1em;
+      flex-shrink: 0;
+      background-color: var(--primary-light);
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center / contain;
+      rotate: -90deg;
+    }
+
+    .accordion > details[open] > summary::before {
+      rotate: 0deg;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .accordion > details > summary::before {
+        transition: rotate 0.2s;
+      }
+    }
+
+    .accordion > details::details-content {
+      interpolate-size: allow-keywords;
+      overflow: clip;
+      contain: layout;
+    }
+
+    .accordion > details:not([open])::details-content {
+      block-size: 0;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .accordion > details::details-content {
+        transition: block-size, content-visibility, display;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+        transition-behavior: allow-discrete;
+      }
+    }
+
+    .details-body {
+      padding: 0 1.5rem 1.5rem;
+      border-block-start: 1px solid var(--border);
+    }
+
+    .feature-list {
+      margin: 1rem 0 0;
+      padding-inline-start: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .feature-list li {
+      font-size: 0.95rem;
+    }
+
+    .feature-list li strong {
+      color: var(--text);
+    }
+
+    /* Tabela Responsiva conforme modern-web-guidance */
+    .timeline-section {
+      margin-block-end: 3.5rem;
+    }
+
+    .table-wrapper {
+      overflow: auto;
+      max-inline-size: 100%;
+      container-type: inline-size;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+
+    table.responsive-timeline {
+      inline-size: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      text-align: left;
+      --label-1: "Ciclo / Período";
+      --label-2: "Entregas Publicadas";
+      --label-3: "Foco Estratégico";
+      --label-4: "Principais Recursos Entregues ao Escritório";
+    }
+
+    table.responsive-timeline caption {
+      padding: 1rem 1.25rem;
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-align: left;
+      background: var(--surface-alt);
+      border-block-end: 1px solid var(--border);
+    }
+
+    table.responsive-timeline thead {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: 2;
+      background: var(--surface-alt);
+    }
+
+    table.responsive-timeline th,
+    table.responsive-timeline td {
+      padding: 1.05rem 1.25rem;
+      border-block-end: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.94rem;
+    }
+
+    table.responsive-timeline thead th {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 800;
+    }
+
+    table.responsive-timeline tbody th {
+      position: sticky;
+      inset-inline-start: 0;
+      background: var(--surface);
+      font-weight: 800;
+      color: var(--primary);
+      min-inline-size: 175px;
+      z-index: 1;
+    }
+
+    @container (width < 680px) {
+      table.responsive-timeline,
+      table.responsive-timeline thead,
+      table.responsive-timeline tbody,
+      table.responsive-timeline tr,
+      table.responsive-timeline th,
+      table.responsive-timeline td {
+        display: block;
+      }
+
+      table.responsive-timeline thead {
+        display: none;
+      }
+
+      table.responsive-timeline tr {
+        margin: 1rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+      }
+
+      table.responsive-timeline tbody th {
+        position: sticky;
+        inset-block-start: 0;
+        z-index: 2;
+        background: var(--surface-alt);
+      }
+
+      table.responsive-timeline td:nth-child(2)::before {
+        content: var(--label-2) ": ";
+        font-weight: 800;
+        color: var(--text-muted);
+      }
+
+      table.responsive-timeline td:nth-child(3)::before {
+        content: var(--label-3) ": ";
+        font-weight: 800;
+        color: var(--text-muted);
+      }
+
+      table.responsive-timeline td:nth-child(4)::before {
+        content: var(--label-4) ": ";
+        font-weight: 800;
+        color: var(--text-muted);
+        display: block;
+        margin-block-end: 0.25rem;
+      }
+    }
+
+    /* Em andamento e Próximas Etapas */
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+      margin-block-end: 3.5rem;
+    }
+
+    .status-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .status-card.in-progress {
+      border-block-start: 5px solid #2563eb;
+    }
+
+    .status-tag {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      margin-block-end: 0.75rem;
+      letter-spacing: 0.03em;
+    }
+
+    .tag-amber {
+      background: var(--gold-bg);
+      color: var(--gold);
+    }
+
+    .tag-blue {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .tag-purple {
+      background: var(--purple-bg);
+      color: var(--purple);
+    }
+
+    .status-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.12rem;
+    }
+
+    .status-card p {
+      margin: 0;
+      font-size: 0.94rem;
+      color: var(--text-muted);
+    }
+
+    .two-col-backlog {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2rem;
+      margin-block-end: 3.5rem;
+    }
+
+    .backlog-column {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.85rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .backlog-column h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.28rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .backlog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-block-start: 1.25rem;
+    }
+
+    .backlog-item {
+      background: var(--surface-alt);
+      border-radius: var(--radius-sm);
+      padding: 1.15rem 1.25rem;
+      border-inline-start: 3px solid var(--primary-light);
+    }
+
+    .backlog-item h4 {
+      margin: 0 0 0.35rem;
+      font-size: 1.02rem;
+    }
+
+    .backlog-item p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2.25rem 1rem;
+      border-block-start: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media print {
+      .topbar,
+      .filter-bar,
+      .accordion-toolbar {
+        display: none !important;
+      }
+      .hero {
+        background: #1e3a8a !important;
+        color: #000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de Navegação -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="#topo" class="brand">
+        <span class="brand-badge">SNIPERTEC • A.REIS ADVOGADOS</span>
+        <span>Relatório Executivo de Evolução Tecnológica</span>
+      </a>
+      <nav class="nav-links" aria-label="Seções do relatório">
+        <a href="#espelho-contrato">Escopo Contratual</a>
+        <a href="#evolucao-areas">As 8 Áreas</a>
+        <a href="#entregas-detalhadas">Catálogo Completo</a>
+        <a href="#cronograma-deploys">Ciclos de Entrega</a>
+        <a href="#em-andamento">Em Andamento</a>
+        <a href="#proximos-passos">Próximas Etapas</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="btn" id="theme-toggle" aria-label="Alternar tema claro ou escuro">
+          🌓 Tema
+        </button>
+        <button type="button" class="btn btn-primary" id="print-btn">
+          🖨️ Exportar / Imprimir PDF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="topo">
+    <!-- HERO EXECUTIVO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-eyebrow">
+        ⚖️ PRESTAÇÃO DE CONTAS EXECUTIVA • SETEMBRO A NOVEMBRO DE 2026
+      </div>
+      <h1 id="hero-title">
+        85 Dias de Evolução Contínua: Da Base Fundacional à Plataforma de Inteligência Jurídica Sob Medida da A.Reis Advogados.
+      </h1>
+      <p class="lead">
+        Apresentamos de forma simples, transparente e objetiva todas as novas funcionalidades, automações, integrações com tribunais e camadas de governança desenvolvidas pela <strong>Snipertec Tecnologia e Automação</strong> desde a assinatura do Contrato de Desenvolvimento Evolutivo.
+      </p>
+
+      <!-- Dados do Contrato Assinado -->
+      <div class="contract-strip" aria-label="Dados oficiais do contrato assinado">
+        <div class="contract-item">
+          <span>Início do Ciclo Evolutivo</span>
+          <strong>01 e 04 de Setembro de 2026 (Autentique)</strong>
+        </div>
+        <div class="contract-item">
+          <span>Signatários</span>
+          <strong>Dra. Angélica Reis &amp; Douglas Nogueira (Snipertec)</strong>
+        </div>
+        <div class="contract-item">
+          <span>Escopo Contratual (Cláusula 1ª)</span>
+          <strong>Novos Recursos Sob Demanda + APIs + Backups + Suporte</strong>
+        </div>
+        <div class="contract-item">
+          <span>Período Consolidado neste Relatório</span>
+          <strong>01/09/2026 a 24/11/2026 (239 PRs / 1.308 Commits)</strong>
+        </div>
+      </div>
+
+      <!-- Placar Geral (100% Auditado no Git e no Banco de Produção) -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-number">239</div>
+          <div class="kpi-title">Pacotes Publicados (PRs)</div>
+          <p class="kpi-desc">239 Pull Requests e 1.308 commits entregues em produção (até o PR #253) — média de quase 3 entregas por dia.</p>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">140 Processos</div>
+          <div class="kpi-title">Sincronizados no Piloto Judit</div>
+          <p class="kpi-desc">Consultados direto no TJSP, TRT-2 e TRF-3: o robô trouxe automaticamente todo o histórico deles (14.800 movimentações, média de ~105 por processo).</p>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">631</div>
+          <div class="kpi-title">Processos Padronizados</div>
+          <p class="kpi-desc">100% da carteira estruturada e conferida: 519 processos judiciais (CNJ) + 109 administrativos tributários importados da Receita.</p>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">16.090</div>
+          <div class="kpi-title">Testes Automatizados</div>
+          <p class="kpi-desc">Verificações automáticas que protegem a plataforma hoje (+8.120 novos testes criados durante o ciclo evolutivo).</p>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">178 → 594</div>
+          <div class="kpi-title">Rotas 100% Blindadas</div>
+          <p class="kpi-desc">178 rotas atualizadas em novembro para validação ativa no banco a cada clique, cobrindo 100% das 594 rotas da API.</p>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">100%</div>
+          <div class="kpi-title">Deploys com Backup</div>
+          <p class="kpi-desc">Cópia integral do banco PostgreSQL realizada no servidor antes de cada atualização, com zero perda de dados.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOVO: ESPELHO DO CONTRATO ASSINADO X ENTREGAS REALIZADAS (LEITURA EM 30 SEGUNDOS) -->
+    <section class="contract-mirror" id="espelho-contrato" aria-labelledby="mirror-title">
+      <div class="section-header" style="margin-block-end: 0.5rem;">
+        <span class="section-eyebrow">Cumprimento Integral do Objeto Contratual</span>
+        <h2 id="mirror-title">Leitura em 30 Segundos: O Que o Contrato Previa × O Que Foi Entregue</h2>
+        <p>Cruzamento direto das 3 obrigações da Cláusula 1ª do contrato assinado em setembro com as entregas em produção.</p>
+      </div>
+
+      <div class="mirror-grid">
+        <div class="mirror-card">
+          <span class="mirror-status">✅ Cláusula 1ª (Item 1) • 100% Cumprido e Superado</span>
+          <h3>1. Desenvolvimento Evolutivo &amp; Novas APIs</h3>
+          <p>
+            <strong>O que o contrato previa:</strong> Criação de novos recursos sob demanda e conexão de novas APIs conforme a necessidade do escritório.<br /><br />
+            <strong>O que entregamos:</strong> Conexão empresarial completa com a <strong>API da Judit</strong> (Tribunais + Diário da Justiça DJEN por OAB + Download de Autos + Enriquecimento CPF/CNPJ), <strong>Nova Aba Financeiro do Portal do Cliente</strong>, <strong>Central de Relatórios em 3 cliques</strong>, <strong>Dossiê Executivo em PDF</strong>, <strong>Módulo Inteligência &amp; Jurimetria</strong>, <strong>Due Diligence por CPF/CNPJ</strong>, <strong>Novo Processo em 3 Passos</strong> e <strong>Workflow Extrajudicial</strong>.
+          </p>
+        </div>
+
+        <div class="mirror-card">
+          <span class="mirror-status">✅ Cláusula 1ª (Item 2) • 100% Cumprido</span>
+          <h3>2. Manutenção Preventiva, Corretiva &amp; Backups</h3>
+          <p>
+            <strong>O que o contrato previa:</strong> Estabilidade contínua da plataforma, evolução preventiva e rotina de backups a cada atualização.<br /><br />
+            <strong>O que entregamos:</strong> Arquitetura de <strong>Alta Disponibilidade</strong> para uso simultâneo de toda a equipe, proteção de login individualizada por conta (sem bloquear o Wi-Fi do escritório), <strong>blindagem ativa nas 594 rotas da API</strong>, <strong>16.090 testes automatizados</strong> e <strong>backup integral do banco de dados em 100% das 239 atualizações</strong>.
+          </p>
+        </div>
+
+        <div class="mirror-card">
+          <span class="mirror-status">✅ Cláusula 1ª (Item 3) • 100% Cumprido</span>
+          <h3>3. Suporte Especializado &amp; Implantação Operacional</h3>
+          <p>
+            <strong>O que o contrato previa:</strong> Apoio técnico especializado à equipe para adequação do sistema à rotina do escritório.<br /><br />
+            <strong>O que entregamos:</strong> Importação de <strong>109 processos tributários</strong>, padronização e conferência dos <strong>631 processos da carteira</strong>, <strong>unificação de cadastros duplicados</strong>, ativação dos <strong>perfis das 7 assistentes</strong>, redistribuição das tarefas históricas, configuração completa do <strong>e-mail institucional + DMARC na KingHost</strong> e instalação de <strong>balões de Ajuda Contextual ("?")</strong> em todo o sistema.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISÃO EXECUTIVA DA JORNADA MÊS A MÊS -->
+    <section class="story-box" id="visao-geral" aria-labelledby="story-title">
+      <div class="story-header">
+        <span class="story-badge">📈 A EVOLUÇÃO MÊS A MÊS</span>
+        <h2 id="story-title">A linha de evolução do sistema em 3 atos</h2>
+      </div>
+      <p style="margin: 0; color: var(--text-muted); font-size: 1.02rem;">
+        Partindo da <strong>Base Fundacional</strong> implantada até agosto, estruturamos a evolução dos últimos 85 dias em uma sequência lógica para que o escritório crescesse com segurança:
+      </p>
+      <div class="story-grid">
+        <div class="story-step">
+          <span class="month-tag">ATO 1 • SETEMBRO/2026</span>
+          <h3>Alta Disponibilidade &amp; Capacidade</h3>
+          <p>Preparamos o servidor para múltiplos acessos simultâneos o dia inteiro, isolamos a proteção de senha por conta individual e refinamos a visualização rápida da Agenda e do Portal.</p>
+        </div>
+        <div class="story-step">
+          <span class="month-tag">ATO 2 • OUTUBRO/2026</span>
+          <h3>Governança da Agenda &amp; Carteira Tributária</h3>
+          <p>Implantamos prazos em dias úteis, perfil de gestão para a Adriana, importação dos 109 processos tributários da Receita Federal, aba Histórico de Auditoria nas tarefas, cadeado no título e campo Providência.</p>
+        </div>
+        <div class="story-step">
+          <span class="month-tag">ATO 3 • NOVEMBRO/2026 (1ª QUINZENA)</span>
+          <h3>Conexão com Tribunais (Judit) &amp; Automação</h3>
+          <p>Lançamos a baixa em lote de prazos repetidos, convite via WhatsApp, desligamento seguro, workflow extrajudicial e a conexão direta com os tribunais e Diário da Justiça via Judit (piloto em 140 processos).</p>
+        </div>
+        <div class="story-step">
+          <span class="month-tag">ATO 4 • NOVEMBRO/2026 (2ª QUINZENA)</span>
+          <h3>Inteligência, Relatórios, Equipe &amp; Portal Financeiro</h3>
+          <p>Entregamos a Central de Relatórios em 3 cliques, Dossiê PDF para cliente, Raio-X e Jurimetria, Consulta CPF/CNPJ (Due Diligence), Novo Processo em 3 Passos, Ajuda "?" em tudo e a Nova Aba Financeiro do Portal.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVOLUÇÃO POR ÁREA (CARDS ESCANEÁVEIS COM FILTRO POR CATEGORIA) -->
+    <section id="evolucao-areas" aria-labelledby="ba-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">Escopo Completo em Leitura Rápida</span>
+        <h2 id="ba-heading">As 8 Áreas Estratégicas: O Que Foi Entregue na Prática</h2>
+        <p>Clique nos botões abaixo para filtrar por tema ou digite qualquer palavra na busca para localizar uma entrega instantaneamente.</p>
+      </div>
+
+      <div class="filter-bar">
+        <div class="filter-top">
+          <input
+            type="search"
+            id="card-search"
+            class="search-input"
+            placeholder="🔍 Pesquisar entrega (ex.: Judit, Portal, Mensalidades, Agenda, Tributário, Relatórios, Equipe, KingHost...)"
+            aria-label="Pesquisar entregas no relatório"
+          />
+          <span id="search-count" style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);">
+            Exibindo todas as 8 áreas estratégicas
+          </span>
+        </div>
+        <div class="category-pills" role="group" aria-label="Filtrar áreas por categoria">
+          <button type="button" class="cat-btn active" data-filter="all">Todas as 8 Áreas</button>
+          <button type="button" class="cat-btn" data-filter="tribunais">🏛️ Tribunais, Judit &amp; Inteligência</button>
+          <button type="button" class="cat-btn" data-filter="agenda">📅 Agenda, Prazos &amp; Processos</button>
+          <button type="button" class="cat-btn" data-filter="portal">💎 Portal do Cliente &amp; Relatórios</button>
+          <button type="button" class="cat-btn" data-filter="equipe">👩‍💼 Equipe, Infra &amp; Segurança</button>
+        </div>
+      </div>
+
+      <div class="ba-grid" id="ba-grid">
+        <!-- Card 1 -->
+        <article class="ba-card" data-category="equipe" data-searchable="infraestrutura performance login disponibilidade servidor seguranca wifi rede kinghost dmarc email smtp">
+          <div class="ba-card-header">
+            <h3 class="ba-title">1. Alta Disponibilidade, Acesso &amp; E-mail</h3>
+            <span class="pr-pill">✅ 100% Concluído</span>
+          </div>
+          <div class="executive-summary-pill">
+            <strong>💡 Ganho Prático para o Escritório</strong>
+            Servidor preparado para toda a equipe trabalhando ao mesmo tempo, login individualizado sem travar o Wi-Fi e disparos de e-mail autenticados.
+          </div>
+          <div class="ba-evolution-strip">
+            <strong>Evolução:</strong> Da configuração inicial de partida para arquitetura de alta capacidade e segurança ativa.
+          </div>
+          <div class="ba-after">
+            <strong>🚀 Recursos Entregues e Ativos</strong>
+            <ul class="check-list">
+              <li><strong>Reciclagem inteligente de conexões</strong> (WebSocket, memória e documentos) para estabilidade o dia inteiro.</li>
+              <li><strong>Proteção de login por conta individual:</strong> se alguém errar a senha, apenas a conta dela aguarda, sem bloquear o Wi-Fi do escritório.</li>
+              <li><strong>Credencial de e-mail institucional e autenticação DMARC configuradas na KingHost</strong> para disparos automáticos.</li>
+              <li><strong>Validação ativa nas 594 rotas</strong> e backup completo do banco antes de 100% das atualizações.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="ba-card" data-category="agenda" data-searchable="agenda prazos governanca dias uteis feriados baixa lote historico auditoria providencia extrajudicial kanban ex-colaboradoras">
+          <div class="ba-card-header">
+            <h3 class="ba-title">2. Agenda Executiva &amp; Governança de Prazos</h3>
+            <span class="pr-pill">✅ 35+ Entregas no Ar</span>
+          </div>
+          <div class="executive-summary-pill">
+            <strong>💡 Ganho Prático para o Escritório</strong>
+            Prazos só em dias úteis, baixa de 20 acompanhamentos em 1 clique, rastreabilidade de quem alterou datas e visão de carga por colaboradora.
+          </div>
+          <div class="ba-evolution-strip">
+            <strong>Evolução:</strong> De uma agenda básica em dias corridos para um centro de controle completo da Controladoria.
+          </div>
+          <div class="ba-after">
+            <strong>🚀 Recursos Entregues e Ativos</strong>
+            <ul class="check-list">
+              <li><strong>Motor de dias úteis e feriados:</strong> acompanhamentos pulam sábados, domingos e feriados nacionais.</li>
+              <li><strong>Baixa inteligente em lote:</strong> conclui ou cancela todas as repetições futuras de um prazo com 1 clique.</li>
+              <li><strong>Aba Histórico de Auditoria:</strong> linha do tempo imutável que registra quem alterou data, status ou responsável.</li>
+              <li><strong>Cadeado no título da tarefa</strong> (exclusivo da gestão) e destaque visual para o campo <strong>Providência</strong>.</li>
+              <li><strong>Fluxo "Pedir Nova Data"</strong> com aprovação/recusa justificada e trava de Prazo Fatal.</li>
+              <li><strong>Workflow Automático Extrajudicial em 6 etapas</strong> e <strong>Agenda do Escritório</strong> com carga por pessoa (tarefas históricas já redistribuídas!).</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="ba-card" data-category="tribunais" data-searchable="judit tribunais tjsp trt trf andamentos automatico oab djen diario justica aasp ged autos pdf cpf cnpj">
+          <div class="ba-card-header">
+            <h3 class="ba-title">3. Conexão Direta com Tribunais (Judit)</h3>
+            <span class="pr-pill">✅ 55+ Entregas no Ar</span>
+          </div>
+          <div class="executive-summary-pill">
+            <strong>💡 Ganho Prático para o Escritório</strong>
+            Sincronização de capa, andamentos, PDFs do juiz e intimações do Diário da Justiça direto dos tribunais, sem mexer em nada na AASP.
+          </div>
+          <div class="ba-evolution-strip">
+            <strong>Evolução:</strong> Substituição da base pública limitada do governo (DataJud) pela conexão empresarial Judit.
+          </div>
+          <div class="ba-after">
+            <strong>🚀 Recursos Entregues e Ativos</strong>
+            <ul class="check-list">
+              <li><strong>Botão "Atualizar via Judit" em 1 clique:</strong> puxa capa oficial e histórico de movimentações (com trava de 24h contra cobrança dupla).</li>
+              <li><strong>Robô de Monitoramento Diário de Processos:</strong> vigia novas movimentações nos tribunais automaticamente.</li>
+              <li><strong>Monitoramento do Diário da Justiça (DJEN) por OAB:</strong> captura diária em módulo 100% independente da <strong>AASP</strong> (que segue intocada).</li>
+              <li><strong>Download direto de Autos/PDFs do Tribunal para o GED</strong> com leitor de PDF integrado.</li>
+              <li><strong>Botão "Completar com Judit"</strong> (preenche ficha do cliente pelo CPF/CNPJ) e painel de custos em R$.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="ba-card" data-category="portal" data-searchable="relatorios central assistente que relatorio voce quer dossie executivo pdf excel cliente">
+          <div class="ba-card-header">
+            <h3 class="ba-title">4. Central de Relatórios em 3 Cliques &amp; Dossiê PDF</h3>
+            <span class="pr-pill">✅ 100% Concluído</span>
+          </div>
+          <div class="executive-summary-pill">
+            <strong>💡 Ganho Prático para o Escritório</strong>
+            Qualquer pessoa autorizada gera relatórios escolhendo um dos 8 cartões prontos, inclusive um Dossiê em PDF em linguagem simples para o cliente.
+          </div>
+          <div class="ba-evolution-strip">
+            <strong>Evolução:</strong> De um formulário técnico de múltiplos filtros para autoatendimento visual em 3 cliques.
+          </div>
+          <div class="ba-after">
+            <strong>🚀 Recursos Entregues e Ativos</strong>
+            <ul class="check-list">
+              <li><strong>Assistente "Que relatório você quer?"</strong> com <strong>8 cartões prontos</strong> para a rotina do escritório.</li>
+              <li><strong>Prévia imediata na tela</strong> e exportação com 1 clique em <strong>PDF</strong> ou <strong>Excel</strong>.</li>
+              <li><strong>Dossiê Executivo do Processo em PDF</strong> com duas versões: <em>Versão Cliente</em> (linguagem acessível e zero dados internos) e <em>Versão Interna</em>.</li>
+              <li><strong>Histórico "Relatórios gerados"</strong> em português claro com botão <em>"Gerar de novo"</em>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="ba-card" data-category="tribunais" data-searchable="inteligencia jurimetria raio-x jurisprudencia aasp due diligence consulta cpf cnpj trabalhista rh 140 processos">
+          <div class="ba-card-header">
+            <h3 class="ba-title">5. Inteligência Jurídica, Raio-X &amp; Due Diligence</h3>
+            <span class="pr-pill">✅ 140 Processos no Piloto</span>
+          </div>
+          <div class="executive-summary-pill">
+            <strong>💡 Ganho Prático para o Escritório</strong>
+            Resumo visual no topo de cada processo, buscador instantâneo no acervo do escritório e consulta nacional de CPF/CNPJ para análise de risco e RH.
+          </div>
+          <div class="ba-evolution-strip">
+            <strong>Evolução:</strong> Criação do núcleo analítico alimentado por dados reais sincronizados dos tribunais.
+          </div>
+          <div class="ba-after">
+            <strong>🚀 Recursos Entregues e Ativos</strong>
+            <ul class="check-list">
+              <li><strong>Piloto executado em 140 processos reais</strong> (TJSP, TRT-2 e TRF-3), preenchendo automaticamente 14.800 movimentações do histórico.</li>
+              <li><strong>Cartão "Raio-X do Processo"</strong> no topo da ficha com fase atual, linha do tempo por instância e comparativo com a vara.</li>
+              <li><strong>Jurimetria Visual</strong> por tribunal e buscador tipo "Google interno" de <strong>Jurisprudência + AASP</strong>.</li>
+              <li><strong>Nova tela "Consulta por CPF/CNPJ" (Due Diligence e RH):</strong> inclui busca por partes inferidas que localiza inclusive processos trabalhistas onde o TRT oculta o CPF, gerando PDF por área sem misturar com a base de clientes.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="ba-card" data-category="agenda" data-searchable="processos cadastro 3 passos tributario receita federal administrativo civel carteira padronizacao 631 unificacao duplicados">
+          <div class="ba-card-header">
+            <h3 class="ba-title">6. Novo Processo em 3 Passos &amp; Carteira Tributária</h3>
+            <span class="pr-pill">✅ 631 Processos Conferidos</span>
+          </div>
+          <div class="executive-summary-pill">
+            <strong>💡 Ganho Prático para o Escritório</strong>
+            Cadastro guiado para processos Judiciais e Administrativos (Receita/CARF/SEFAZ), 100% da carteira padronizada e cadastros duplicados unificados.
+          </div>
+          <div class="ba-evolution-strip">
+            <strong>Evolução:</strong> Expansão do padrão judicial CNJ para cobrir toda a área Tributária e Administrativa.
+          </div>
+          <div class="ba-after">
+            <strong>🚀 Recursos Entregues e Ativos</strong>
+            <ul class="check-list">
+              <li><strong>Novo Processo em 3 etapas:</strong> Natureza Judicial (com validação de dígito CNJ) × Administrativa, <strong>12 Áreas do Direito</strong> e múltiplos co-responsáveis.</li>
+              <li><strong>Importação de 109 processos administrativos tributários</strong> da Receita Federal (39 empresas).</li>
+              <li><strong>Padronização e conferência de todos os 631 processos da carteira</strong> (incluindo a unificação de 279 processos Cíveis).</li>
+              <li><strong>Ficha dividida entre "Dados do Escritório" × "Dados do Tribunal"</strong>.</li>
+              <li><strong>Trava anti-duplicidade de CPF/CNPJ e processo</strong> + <strong>unificação de cadastros históricos duplicados concluída</strong>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Card 7 -->
+        <article class="ba-card" data-category="equipe" data-searchable="equipe gestao perfis adriana assistentes whatsapp convite desligamento celular tablet ajuda contextual">
+          <div class="ba-card-header">
+            <h3 class="ba-title">7. Gestão de Equipe, WhatsApp &amp; Ajuda "?"</h3>
+            <span class="pr-pill">✅ 7 Assistentes Ativas</span>
+          </div>
+          <div class="executive-summary-pill">
+            <strong>💡 Ganho Prático para o Escritório</strong>
+            Perfis das 7 assistentes já ativados em 1 clique, convite copiável para o WhatsApp, desligamento seguro de equipe e explicação "?" em cada botão.
+          </div>
+          <div class="ba-evolution-strip">
+            <strong>Evolução:</strong> De permissões técnicas individuais para gestão visual rápida no computador e no celular.
+          </div>
+          <div class="ba-after">
+            <strong>🚀 Recursos Entregues e Ativos</strong>
+            <ul class="check-list">
+              <li><strong>Nova central Admin › Equipe</strong> com gaveta lateral, <strong>5 Perfis Prontos em 1 clique</strong> e <strong>acessos das 7 assistentes já configurados e ativos</strong>.</li>
+              <li><strong>Botão "Link de acesso"</strong> para copiar o convite e enviar direto no WhatsApp da nova colaboradora.</li>
+              <li><strong>Fluxo de desligamento seguro:</strong> transfere todas as tarefas abertas em lote antes de desativar um acesso.</li>
+              <li><strong>Balões de Ajuda Contextual ("?")</strong> ao lado dos botões de Financeiro, Admin, Equipe, Portal, Processos, Publicações e Agenda.</li>
+              <li><strong>Layout 100% responsivo</strong> homologado para uso em celular, tablet e computador.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Card 8 -->
+        <article class="ba-card" data-category="portal" data-searchable="portal cliente financeiro mensalidades cliente desde processos em andamento situacao angelica diretoria">
+          <div class="ba-card-header">
+            <h3 class="ba-title">8. Portal do Cliente &amp; Nova Aba Financeiro</h3>
+            <span class="pr-pill">✅ No Ar • Visão Diretoria</span>
+          </div>
+          <div class="executive-summary-pill">
+            <strong>💡 Ganho Prático para o Escritório</strong>
+            Vitrine executiva de alto padrão para o cliente acompanhar seu histórico de mensalidades e a situação de seus processos, exatamente como idealizado pela Dra. Angélica.
+          </div>
+          <div class="ba-evolution-strip">
+            <strong>Evolução:</strong> De consulta básica de faturas para um painel executivo de transparência e relacionamento.
+          </div>
+          <div class="ba-after">
+            <strong>🚀 Recursos Entregues e Ativos</strong>
+            <ul class="check-list">
+              <li><strong>Cartão "Cliente desde":</strong> destaca o mês e ano de início da parceria com o escritório.</li>
+              <li><strong>Cartão "Mensalidades do Ano":</strong> exibe o resumo anual (ex.: <em>"11 de 12 pagas"</em>) alimentado pela categoria <em>Mensalidade</em>.</li>
+              <li><strong>Tabela "Processos em Andamento":</strong> mostra Partes, Número, Tipo, Valor da Causa configurável e a coluna <strong>"Situação para o Cliente"</strong>.</li>
+              <li><strong>Privacidade e precisão contábil:</strong> proteção total de anotações internas, faturas quitadas exibidas como <em>"Pago"</em> e DRE protegido contra duplicidades.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ACORDEÃO DETALHADO POR MÓDULO (Modern Web Guidance compliant) -->
+    <section class="accordion-section" id="entregas-detalhadas" aria-labelledby="acc-heading">
+      <div class="accordion-toolbar">
+        <div class="section-header" style="margin-block-end: 0;">
+          <span class="section-eyebrow">Auditoria Técnica por Módulo</span>
+          <h2 id="acc-heading">Catálogo Detalhado de Funcionalidades e Pacotes (PRs #4 a #253)</h2>
+          <p>Clique em qualquer módulo abaixo caso deseje consultar a lista técnica detalhada e os números dos pacotes publicados.</p>
+        </div>
+        <button
+          type="button"
+          class="btn"
+          commandfor="modulos-accordion"
+          command="--toggle-all"
+          aria-expanded="false"
+        >
+          <span class="expand">➕ Expandir todos os módulos</span>
+          <span class="collapse">➖ Recolher todos os módulos</span>
+        </button>
+      </div>
+
+      <div class="accordion" id="modulos-accordion" aria-labelledby="acc-heading">
+        <details open>
+          <summary>Módulo 1 — Infraestrutura, Alta Disponibilidade, E-mail Institucional &amp; Segurança (PRs #4 a #16, #19, #54 a #59, #248)</summary>
+          <div class="details-body">
+            <ul class="feature-list">
+              <li><strong>Gerenciamento dinâmico de conexões em tempo real (PRs #4, #15, #16):</strong> Otimização do ciclo de vida das conexões de notificações (WebSocket), memória rápida (Redis) e repositório de documentos (MinIO), garantindo estabilidade contínua para toda a equipe.</li>
+              <li><strong>Proteção inteligente de login por conta individual (PRs #5, #8, #13):</strong> Isolamento das tentativas de login por usuário para que bloqueios preventivos de senha nunca afetem o endereço IP da rede Wi-Fi do escritório.</li>
+              <li><strong>E-mail institucional e autenticação DMARC na KingHost (Concluído):</strong> Credencial da conta <code>tecnologia@areisadvogados.com.br</code> atualizada e autenticidade DMARC configurada para disparo automático de convites e alertas.</li>
+              <li><strong>Validação ativa de permissões em 100% das 594 rotas (PRs #19, #54, #56, #59):</strong> Migração das 178 rotas restantes para verificação instantânea de conta ativa no banco de dados a cada clique, além de rotina de backup PostgreSQL antes de 100% dos deploys.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Módulo 2 — Agenda Executiva, Prazos em Dias Úteis, Auditoria &amp; Workflow Extrajudicial (35+ PRs)</summary>
+          <div class="details-body">
+            <ul class="feature-list">
+              <li><strong>Motor de prazos em dias úteis e feriados (PR #30):</strong> Agendamento automático de acompanhamentos diários respeitando apenas dias úteis (pulando sábados, domingos e feriados nacionais).</li>
+              <li><strong>Baixa inteligente em lote de acompanhamentos (PRs #66, #67, #68):</strong> Ao concluir ou cancelar o prazo principal, o sistema oferece a baixa automática de todas as repetições futuras vinculadas em 1 clique, preservando itens com anotações específicas e permitindo reabertura em lote.</li>
+              <li><strong>Aba "Histórico" para rastreabilidade completa (PRs #37, #38, #39):</strong> Linha do tempo imutável dentro de cada tarefa que registra automaticamente data, hora e autor de qualquer alteração de prazo, status, título ou responsável.</li>
+              <li><strong>Governança de Título e destaque do campo "Providência" (PRs #40, #41, #43, #44, #45):</strong> Proteção do título original da tarefa (editável apenas pela coordenação/administração) e novo campo <em>Providência</em> com destaque visual na agenda e nos alertas urgentes.</li>
+              <li><strong>Fluxo formal de "Pedir Nova Data" com aprovação (PRs #181, #182, #188, #210):</strong> Solicitação estruturada de reagendamento com justificativa, trava de segurança em relação ao Prazo Fatal, notificação à gestão e aprovação ou recusa fundamentada.</li>
+              <li><strong>Seleção exclusiva de membros da equipe e redistribuição histórica concluída (PRs #168, #176, #177, #189, #190):</strong> Separação estrita entre cliente e profissionais responsáveis, higienização de 221 registros e conclusão da redistribuição das tarefas sem titular e de ex-colaboradoras.</li>
+              <li><strong>Workflow Automático de Notificação Extrajudicial em 6 etapas e Agenda do Escritório (PRs #70, #73, #74, #169, #191, #192, #240):</strong> Encadeamento guiado de etapas extrajudiciais, painel gerencial de carga <em>"Por pessoa"</em> e Kanban paginado de alta velocidade.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Módulo 3 — Integração Judit: Sincronização Direta com Tribunais e Diário da Justiça (PRs #75 a #132 e #241)</summary>
+          <div class="details-body">
+            <ul class="feature-list">
+              <li><strong>Atualização de Processo em 1 Clique via Judit (PRs #79, #83, #88 a #92):</strong> Importação imediata da capa oficial do tribunal (vara, juiz, classe, assunto, valor da causa e partes) e de todo o histórico de movimentações, com trava inteligente de 24h para evitar consumo duplicado.</li>
+              <li><strong>Robô de Monitoramento Diário de Processos (PRs #94, #95, #98, #100, #101, #127, #241):</strong> Ativação individual ou em lote para acompanhamento contínuo de novos andamentos nos tribunais, com conciliação noturna automatizada.</li>
+              <li><strong>Monitoramento de Intimações no Diário da Justiça (DJEN) por OAB (PRs #99, #103, #105, #106):</strong> Captura automática de publicações oficiais por número de OAB em estrutura dedicada, operando em total harmonia e independência da integração AASP.</li>
+              <li><strong>Importação de Autos e Anexos do Tribunal para o GED (PRs #110, #117, #120 a #124):</strong> Download direto das peças e documentos oficiais do tribunal para a aba GED do processo, com visualização integrada de PDF no navegador.</li>
+              <li><strong>Enriquecimento Cadastral ("Completar com Judit") e Painel de Governança (PRs #93, #96, #97, #111 a #114, #125 a #132):</strong> Preenchimento automático de dados de clientes a partir do CPF/CNPJ e painel transparente em <em>Admin › Judit</em> com controle de consumo em reais.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Módulo 4 — Inteligência Areis, Jurimetria, Due Diligence (CPF/CNPJ) &amp; Central de Relatórios (PRs #108 a #212)</summary>
+          <div class="details-body">
+            <ul class="feature-list">
+              <li><strong>Piloto real em 140 processos da carteira (PR #155):</strong> Sincronização automática de 101 processos do TJSP, 38 do TRT-2 e 1 do TRF-3. Só nesses 140 processos, a Judit preencheu sozinha <strong>14.800 linhas de histórico/movimentações</strong> (média de ~105 por processo) e localizou <strong>10.511 documentos anexos</strong> nos tribunais.</li>
+              <li><strong>Assistente "Que relatório você quer?" em 3 cliques (PRs #140, #142, #145, #148, #163 a #167, #174, #175, #179, #180, #186, #187):</strong> Interface intuitiva com 8 cartões prontos, prévia imediata na tela, exportação em PDF/Excel, histórico organizado em português e permissão específica para assistentes.</li>
+              <li><strong>Dossiê Executivo do Processo em PDF (PRs #141 e #143):</strong> Relatório completo com a identidade visual da A.Reis Advogados em duas modalidades: <strong>"Para o cliente"</strong> (com explicação clara do andamento e proteção de dados internos) e <strong>"Interno"</strong>.</li>
+              <li><strong>Cartão "Raio-X do Processo", Jurimetria Visual e Jurisprudência Interna + AASP (PRs #108 a #156, #173, #178):</strong> Painel visual no topo do processo, estatísticas por tribunal e motor de busca instantânea sobre decisões da carteira e publicações da AASP.</li>
+              <li><strong>Módulo "Consulta por CPF/CNPJ" para Due Diligence e Contratações (PRs #202, #203, #208, #209, #211, #212):</strong> Ferramenta dedicada no menu <em>Inteligência</em> com tecnologia de busca por partes inferidas e consulta direta aos tribunais (capaz de localizar inclusive ações trabalhistas onde o CPF é omitido na capa), gerando dossiê por área do Direito em PDF sem interferir na base de clientes.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Módulo 5 — Novo Processo em 3 Passos, Carteira Tributária, Conferência dos 631 Processos &amp; Unificação de Cadastros (PRs #20 a #62 e #157 a #206)</summary>
+          <div class="details-body">
+            <ul class="feature-list">
+              <li><strong>Cadastro "Novo Processo" em 3 etapas guiadas (PRs #157, #161, #162, #197 a #206):</strong> Estruturação clara entre <strong>Natureza</strong> (Judicial CNJ com validação automática de dígito × Administrativo Receita Federal, CARF, PGFN, SEFAZ, Prefeitura e INSS), <strong>12 Áreas do Direito</strong> e <strong>Classe oficial</strong>, com múltiplos advogados co-responsáveis e gravação de Comarca.</li>
+              <li><strong>Incorporação da Carteira Tributária Administrativa (PRs #25, #26, #32):</strong> Importação estruturada de <strong>109 processos administrativos da Receita Federal</strong> e organização de 39 empresas clientes.</li>
+              <li><strong>Padronização e conferência concluída dos 631 processos da carteira (PRs #86, #87 e #204):</strong> Consolidação de 279 processos na área Cível, classificação dos 631 processos na nova estrutura e revisão concluída do filtro de conferência.</li>
+              <li><strong>Unificação de cadastros históricos duplicados e trava preventiva (PRs #20, #23, #28, #50 a #58, #62, #251):</strong> Higienização e unificação de fichas de clientes duplicadas anteriores a novembro, validação automática de CPF/CNPJ e número de processo (inclusive na Lixeira) e exportação Excel/PDF de 100% da carteira.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Módulo 6 — Central Admin › Equipe (7 Assistentes Ativas), Mobilidade Celular/Tablet &amp; Ajuda Contextual "?" (PRs #17 a #72, #170 a #207, #244 a #253)</summary>
+          <div class="details-body">
+            <ul class="feature-list">
+              <li><strong>Nova central "Admin › Equipe" com 5 Perfis Prontos e 7 Assistentes Ativadas (PRs #17, #18, #60, #61, #172, #185, #193):</strong> Gaveta lateral intuitiva com interruptores claros de permissão, 5 perfis pré-configurados em 1 clique e ativação concluída dos acessos de agenda e relatórios para as 7 assistentes do escritório.</li>
+              <li><strong>Convite digital com link copiável para WhatsApp e desligamento seguro (PRs #47, #63 a #65, #69, #71, #72):</strong> Geração imediata de link seguro de ativação para envio direto no WhatsApp e fluxo de desligamento com transferência em lote de tarefas abertas.</li>
+              <li><strong>Sistema de Ajuda Contextual ("?") e Responsividade Mobile/Tablet/Desktop (PRs #118, #119, #158, #170, #171, #183, #184, #194 a #196, #207, #244 a #253):</strong> Balões explicativos ao lado de todas as funções críticas detalhando <em>O que faz, Como usar e O que esperar</em>, com telas homologadas para celular (375px), tablet (768px) e desktop (1440px).</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Módulo 7 — Portal do Cliente Executivo, Nova Aba Financeiro &amp; Governança Financeira (PRs #7 a #29 e #214 a #251)</summary>
+          <div class="details-body">
+            <ul class="feature-list">
+              <li><strong>Nova Aba Financeiro no Portal do Cliente — Visão Dra. Angélica (PRs #235 e #236):</strong> Painel executivo exclusivo para o cliente final contendo: <strong>1. "Cliente desde"</strong> (mês e ano de início da parceria), <strong>2. "Mensalidades do Ano"</strong> (demonstrativo claro como <em>"11 de 12 pagas"</em> alimentado pela categoria <em>Mensalidade</em>) e <strong>3. Tabela "Processos em Andamento"</strong> com Partes, Número, Tipo/Classe, Valor da Causa configurável e a coluna <strong>"Situação"</strong> (alimentada pelo novo campo <em>"Situação para o cliente"</em> ou pela próxima audiência/movimentação).</li>
+              <li><strong>Governança, privacidade e precisão contábil (PRs #7, #10, #14, #29, #215, #222, #223, #225, #232, #233, #243):</strong> Exibição exclusiva de informações destinadas ao cliente, atualização imediata de status de faturas quitadas, sincronização sem duplicidade no DRE, trava de estorno para lançamentos pagos e proteção de contratos encerrados.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- CRONOGRAMA DE DEPLOYS (Responsive Table compliant) -->
+    <section class="timeline-section" id="cronograma-deploys" aria-labelledby="timeline-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">Histórico de Publicações</span>
+        <h2 id="timeline-heading">Cronograma Executivo de Evolução (Setembro a Novembro/2026)</h2>
+        <p>Visão consolidada dos 7 ciclos de entregas contínuas realizados pela Snipertec em produção.</p>
+      </div>
+
+      <div tabindex="0" role="region" aria-labelledby="timeline-caption" class="table-wrapper">
+        <table class="responsive-timeline">
+          <caption id="timeline-caption">Ciclos de Desenvolvimento Evolutivo Publicados em Produção (01/09/2026 a 24/11/2026)</caption>
+          <thead>
+            <tr>
+              <th scope="col">Ciclo / Período</th>
+              <th scope="col">Entregas Publicadas</th>
+              <th scope="col">Foco Estratégico</th>
+              <th scope="col">Principais Recursos Entregues ao Escritório</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Ciclo 1<br><small>01/09 a 25/09/2026</small></th>
+              <td>Marco Inicial e<br><strong>PRs #4 a #16</strong></td>
+              <td><strong>Alta Disponibilidade &amp; Acesso Inteligente</strong></td>
+              <td>Início formal do Contrato Evolutivo (01/09 e 04/09); otimização da infraestrutura para múltiplos acessos simultâneos (gerenciamento automático de conexões WebSocket, Redis e MinIO); proteção de login por conta individual; seletor de agendas no Kanban; filtros rápidos de período e convite por link seguro no Portal.</td>
+            </tr>
+            <tr>
+              <th scope="row">Ciclo 2<br><small>01/10 a 30/10/2026</small></th>
+              <td><strong>PRs #17 a #45</strong><br><small>(29 entregas)</small></td>
+              <td><strong>Governança da Coordenação, Dias Úteis &amp; Tributário</strong></td>
+              <td>Perfil de gestão de equipe para a Controladoria (Adriana); calendário de prazos em <strong>dias úteis e feriados</strong>; importação estruturada de <strong>109 processos administrativos tributários</strong> (Receita Federal); vínculo direto de processos na Agenda; <strong>aba Histórico de Auditoria</strong> nas tarefas; proteção de títulos e destaque para o campo <strong>Providência</strong>.</td>
+            </tr>
+            <tr>
+              <th scope="row">Ciclo 3<br><small>04/11 a 09/11/2026</small></th>
+              <td><strong>PRs #46 a #74</strong><br><small>(29 entregas)</small></td>
+              <td><strong>Automação Operacional em 6 Ondas</strong></td>
+              <td><strong>Baixa inteligente em lote</strong> para acompanhamentos de prazos; convite de equipe com <strong>link copiável para WhatsApp</strong>; <strong>fluxo de desligamento seguro</strong> com transferência de tarefas em aberto; <strong>Workflow Automático Extrajudicial em 6 etapas</strong>; permissões granulares para as 7 assistentes; prevenção de duplicidades e validação ativa em 178 rotas.</td>
+            </tr>
+            <tr>
+              <th scope="row">Ciclo 4<br><small>09/11 a 15/11/2026</small></th>
+              <td><strong>PRs #75 a #132</strong><br><small>(55+ entregas)</small></td>
+              <td><strong>Integração Empresarial Judit (Tribunais &amp; DJEN)</strong></td>
+              <td>Conexão direta com os tribunais via <strong>Judit</strong>: botão <em>"Atualizar via Judit"</em> em 1 clique; <strong>Robô de Monitoramento Diário de Processos</strong>; captura automática de intimações no <strong>Diário da Justiça (DJEN) por OAB</strong> (preservando integralmente a AASP); download de autos do tribunal para o GED; enriquecimento cadastral por CPF/CNPJ e painel de governança de custos.</td>
+            </tr>
+            <tr>
+              <th scope="row">Ciclo 5<br><small>15/11 a 16/11/2026</small></th>
+              <td><strong>PRs #133 a #156</strong><br><small>(24 entregas)</small></td>
+              <td><strong>Inteligência Areis, Jurimetria &amp; Dossiê do Cliente</strong></td>
+              <td>Piloto da Judit executado em <strong>140 processos reais do escritório</strong> (puxando todo o histórico de 14.800 movimentações desses 140 processos); lançamento do menu <strong>Inteligência</strong> com <strong>Jurimetria visual</strong>; cartão <strong>Raio-X do Processo</strong> na ficha; motor de busca de <strong>Jurisprudência Interna + AASP</strong>; <strong>Dossiê Executivo do Processo em PDF</strong> (Versão Cliente e Versão Interna) e consolidação de 279 processos Cíveis.</td>
+            </tr>
+            <tr>
+              <th scope="row">Ciclo 6<br><small>16/11 a 18/11/2026</small></th>
+              <td><strong>PRs #157 a #212</strong><br><small>(56 entregas)</small></td>
+              <td><strong>Experiência do Usuário, Relatórios em 3 Cliques &amp; Due Diligence</strong></td>
+              <td>Assistente visual <strong>"Que relatório você quer?"</strong> com 8 cartões prontos; fluxo formal de <strong>Solicitação de Nova Data</strong>; painel gerencial <strong>Agenda do Escritório</strong> com carga por colaboradora (tarefas históricas redistribuídas); <strong>Novo Processo em 3 Passos</strong> (padronização e conferência dos 631 processos e unificação de cadastros duplicados); módulo <strong>Consulta por CPF/CNPJ (Due Diligence/RH)</strong> e nova central <strong>Admin › Equipe</strong> com as 7 assistentes configuradas.</td>
+            </tr>
+            <tr>
+              <th scope="row">Ciclo 7<br><small>20/11 a 24/11/2026</small></th>
+              <td><strong>PRs #214 a #253</strong><br><small>(39 entregas)</small></td>
+              <td><strong>Nova Aba Financeiro do Portal, E-mail KingHost &amp; Ajuda "?"</strong></td>
+              <td>Lançamento da <strong>Nova Aba Financeiro do Portal do Cliente</strong> (<em>Cliente desde, Mensalidades Pagas no Ano e Processos em Andamento com Situação para o Cliente</em>); implantação dos balões de <strong>Ajuda Contextual ("?")</strong> em todas as telas estratégicas; ativação do e-mail institucional + DMARC na KingHost; e blindagem avançada de precisão contábil no DRE, Faturas, Contratos e Timesheet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- O QUE ESTÁ EM ANDAMENTO AGORA -->
+    <section id="em-andamento" aria-labelledby="wip-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">Acompanhamento Assistido</span>
+        <h2 id="wip-heading">Frentes em Andamento neste Momento (5 Iniciativas Ativas)</h2>
+        <p>Recursos que já estão desenvolvidos e publicados em produção, encontrando-se agora em etapa de ativação assistida junto à Diretoria e à Controladoria.</p>
+      </div>
+
+      <div class="status-grid">
+        <article class="status-card in-progress">
+          <span class="status-tag tag-blue">🚀 EM PRODUÇÃO • ATIVAÇÃO COM CLIENTES</span>
+          <h3>1. Estreia Assistida da Nova Aba Financeiro do Portal</h3>
+          <p>A nova aba Financeiro do Portal já está 100% publicada em produção desde 23/11, acompanhada do guia prático elaborado para a Adriana. Estamos agora apoiando o preenchimento inicial (manual ou via importação em lote pela Snipertec) dos campos <em>"Cliente desde"</em>, <em>"Mensalidades"</em> e <em>"Situação para o cliente"</em> para a apresentação ao primeiro cliente selecionado pela Dra. Angélica.</p>
+        </article>
+
+        <article class="status-card in-progress">
+          <span class="status-tag tag-blue">🚀 MONITORAMENTO AUTOMÁTICO ATIVO</span>
+          <h3>2. Consolidação do Piloto Judit &amp; Expansão da Carteira</h3>
+          <p>Com os primeiros <strong>140 processos</strong> já sincronizados no piloto (todo o histórico de movimentações preenchido automaticamente) e o monitoramento diário da OAB/SP 417687 no Diário da Justiça (DJEN) em operação, estamos acompanhando as capturas diárias para planejar junto à Diretoria a ativação nos demais processos da carteira.</p>
+        </article>
+
+        <article class="status-card in-progress">
+          <span class="status-tag tag-blue">🚀 PRONTO PARA HOMOLOGAÇÃO INTERNA</span>
+          <h3>3. Homologação Prática do Workflow Extrajudicial</h3>
+          <p>O fluxo automatizado de 6 etapas (<em>Notificação extrajudicial → Tratativa → Envio → Retorno → Reenvio → Ação judicial</em>) já está ativo na Agenda. Após a validação prática da rotina pela Controladoria, habilitaremos também o construtor visual para criação de novos fluxos personalizados pelo próprio escritório.</p>
+        </article>
+
+        <article class="status-card in-progress">
+          <span class="status-tag tag-blue">🚀 ETAPAS P0 E P1 ENTREGUES • EXPANSÃO P2/P3</span>
+          <h3>4. Expansão da Ajuda Contextual "?" para Módulos Complementares</h3>
+          <p>Todos os módulos principais (Financeiro, Faturas, Admin, Equipe, Portal, Processos, Publicações e Agenda) já contam com os balões explicativos <strong>"?"</strong>. Na sequência contínua, estenderemos o mesmo padrão de orientação visual para as abas de GED, Contratos, Serviços e CRM.</p>
+        </article>
+
+        <article class="status-card in-progress">
+          <span class="status-tag tag-blue">🚀 GOVERNANÇA DE ENGENHARIA SNIPERTEC</span>
+          <h3>5. Mapeamento Arquitetural &amp; Aceleração de Evoluções</h3>
+          <p>Concluímos a catalogação viva das 5 camadas tecnológicas do sistema Areis (mais de 84% da plataforma documentada linha a linha com 16.090+ testes automatizados), garantindo que cada nova demanda da Diretoria seja desenvolvida com velocidade e segurança ainda maiores.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PRÓXIMAS ETAPAS (ENGENHARIA X DECISÕES ESTRATÉGICAS) -->
+    <section id="proximos-passos" aria-labelledby="missing-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">Planejamento &amp; Governança</span>
+        <h2 id="missing-heading">Próximas Etapas do Roteiro Evolutivo</h2>
+        <p>Com toda a organização operacional concluída (e-mail/DMARC, perfil das 7 assistentes, distribuição de tarefas históricas, conferência dos 631 processos e unificação de cadastros), estas são as próximas entregas técnicas e decisões estratégicas.</p>
+      </div>
+
+      <div class="two-col-backlog">
+        <!-- Coluna A: Engenharia Snipertec -->
+        <div class="backlog-column">
+          <span class="status-tag tag-blue">🔵 CRONOGRAMA TÉCNICO (SNIPERTEC)</span>
+          <h3>Próximas evoluções na fila de engenharia</h3>
+          <div class="backlog-list">
+            <div class="backlog-item">
+              <h4>1. Espelhamento Automático Externo de Backups em Nuvem (3 TB)</h4>
+              <p>Além dos backups automáticos já realizados no servidor a cada atualização, ativaremos a rotina diária de madrugada que envia uma cópia criptografada do banco de dados e dos documentos do GED para armazenamento externo dedicado em nuvem (Google Drive Corporativo 3 TB), adicionando dupla redundância geográfica.</p>
+            </div>
+            <div class="backlog-item">
+              <h4>2. Ciclo de Refinamento Financeiro (Atalho de Quitação &amp; Painéis em Alta Velocidade)</h4>
+              <p>Integração do botão rápido <em>"Marcar como pago"</em> diretamente ao motor de atualização instantânea de saldo bancário, adição da opção de estorno assistido em 1 clique e processamento dos gráficos de DRE e Fluxo de Caixa diretamente no banco de dados para máxima velocidade.</p>
+            </div>
+            <div class="backlog-item">
+              <h4>3. Seletor de Visibilidade em Andamentos Manuais para o Portal</h4>
+              <p>Inclusão da chave <em>"Visível ao cliente no Portal"</em> ao registrar um andamento manual dentro do processo (mantendo os andamentos oficiais da Judit visíveis por padrão e as anotações manuais da equipe como privadas até que a advogada deseje compartilhar).</p>
+            </div>
+            <div class="backlog-item">
+              <h4>4. Inteligência de Notificações na Edição de Compromissos</h4>
+              <p>Aperfeiçoamento dos lembretes da Agenda para que edições simples de texto em uma tarefa preservem o histórico de alertas já enviados anteriormente, evitando reenvios desnecessários.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna B: Alinhamentos Estratégicos com a Diretoria -->
+        <div class="backlog-column">
+          <span class="status-tag tag-purple">🟣 DECISÕES ESTRATÉGICAS &amp; TREINAMENTO (A.REIS + SNIPERTEC)</span>
+          <h3>Próximos passos conjuntos com a Diretoria</h3>
+          <div class="backlog-list">
+            <div class="backlog-item">
+              <h4>1. Seleção do Cliente Piloto para Estreia da Nova Aba Financeiro do Portal</h4>
+              <p>Definir junto à Dra. Angélica o primeiro cliente real para validarmos a visualização executiva de <em>"Cliente desde"</em>, <em>"Mensalidades Pagas"</em> e <em>"Processos em Andamento"</em> (podendo realizar a carga inicial em lote via planilha pela Snipertec caso a equipe deseje ganhar tempo).</p>
+            </div>
+            <div class="backlog-item">
+              <h4>2. Expansão Gradual do Monitoramento Judit para o Restante da Carteira</h4>
+              <p>Com os 140 processos do piloto enriquecidos e o monitoramento diário da OAB no Diário da Justiça validado, alinhar a ativação gradual da sincronização Judit para os demais processos ativos do escritório.</p>
+            </div>
+            <div class="backlog-item">
+              <h4>3. Homologação do Fluxo Extrajudicial &amp; Liberação do Construtor de Fluxos</h4>
+              <p>Acompanhar o uso prático do workflow automático de 6 etapas pela Controladoria para, em seguida, habilitar a tela que permite ao escritório criar novos roteiros passo a passo personalizados.</p>
+            </div>
+            <div class="backlog-item">
+              <h4>4. Sessão de Treinamento Prático da Equipe nas Novas Funcionalidades</h4>
+              <p>Com todas as configurações de perfil das 7 assistentes, e-mail institucional, padronização dos 631 processos e novas telas já concluídas, realizar o treinamento prático com as colaboradoras para aproveitamento total da plataforma.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <strong>Snipertec Tecnologia e Automação LTDA • Parceria Estratégica A.Reis Advogados</strong><br />
+    Relatório Executivo do Contrato de Suporte e Desenvolvimento Evolutivo (01/09/2026 a 24/11/2026) • Ambiente de Apresentação Isolado.
+  </footer>
+
+  <script>
+    // 1. Alternância de Tema Claro / Escuro
+    const themeBtn = document.getElementById("theme-toggle");
+    themeBtn.addEventListener("click", () => {
+      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+      document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
+    });
+
+    // 2. Botão Imprimir / Salvar em PDF
+    document.getElementById("print-btn").addEventListener("click", () => {
+      window.print();
+    });
+
+    // 3. Filtro Combinado: Botões de Categoria + Busca Instantânea nos Cartões das 8 Áreas
+    const searchInput = document.getElementById("card-search");
+    const catButtons = Array.from(document.querySelectorAll(".cat-btn"));
+    const cards = Array.from(document.querySelectorAll(".ba-card"));
+    const searchCount = document.getElementById("search-count");
+    let activeCategory = "all";
+
+    function filterCards() {
+      const q = searchInput.value.trim().toLowerCase();
+      let visible = 0;
+      for (const card of cards) {
+        const text = (card.textContent + " " + (card.dataset.searchable || "")).toLowerCase();
+        const catMatch = activeCategory === "all" || card.dataset.category === activeCategory;
+        const textMatch = !q || text.includes(q);
+        const match = catMatch && textMatch;
+        card.style.display = match ? "flex" : "none";
+        if (match) visible++;
+      }
+      searchCount.textContent =
+        visible === cards.length && !q && activeCategory === "all"
+          ? `Exibindo todas as ${cards.length} áreas estratégicas`
+          : `Exibindo ${visible} de ${cards.length} áreas estratégicas`;
+    }
+
+    searchInput.addEventListener("input", filterCards);
+
+    for (const btn of catButtons) {
+      btn.addEventListener("click", () => {
+        for (const b of catButtons) b.classList.remove("active");
+        btn.classList.add("active");
+        activeCategory = btn.dataset.filter || "all";
+        filterCards();
+      });
+    }
+
+    // 4. Botão Expandir/Recolher todos do acordeão com suporte a Invoker Commands + fallback (modern-web-guidance: accordion)
+    function toggleAllAccordion(accordion, button) {
+      const expand = button.getAttribute("aria-expanded") !== "true";
+      for (const details of accordion.querySelectorAll(":scope > details")) {
+        details.open = expand;
+      }
+      button.setAttribute("aria-expanded", String(expand));
+    }
+
+    document.addEventListener("command", (event) => {
+      if (event.command !== "--toggle-all") return;
+      toggleAllAccordion(event.target, event.source);
+    }, { capture: true });
+
+    if (!Object.hasOwn(HTMLButtonElement.prototype, "commandForElement")) {
+      for (const btn of document.querySelectorAll('[command="--toggle-all"]')) {
+        btn.addEventListener("click", () => {
+          const targetId = btn.getAttribute("commandfor");
+          const accordion = document.getElementById(targetId);
+          if (accordion) toggleAllAccordion(accordion, btn);
+        });
+      }
+    }
+
+    document.addEventListener("toggle", (event) => {
+      if (!(event.target instanceof Element) || !event.target.matches(".accordion > details")) return;
+      const accordion = event.target.parentElement;
+      const button = document.querySelector(`[commandfor="${CSS.escape(accordion.id)}"][command="--toggle-all"]`);
+      if (!button) return;
+      const items = accordion.querySelectorAll(":scope > details");
+      const allOpen = Array.prototype.every.call(items, (d) => d.open);
+      button.setAttribute("aria-expanded", String(allOpen));
+    }, { capture: true });
+  </script>
+</body>
+</html>
